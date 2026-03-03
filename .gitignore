@@ -1,0 +1,20 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# 缓存和日志
+gitbook_cache.json
+gitbook_hash.txt
+gitbook_changes.json
+monitor_stats.json
+monitor.log
+
+# macOS
+.DS_Store
+
+# 配置（包含敏感信息）
+config.json

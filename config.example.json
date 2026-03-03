@@ -1,0 +1,6 @@
+{
+  "gitbook_url": "https://your-gitbook-url.gitbook.io/your-book",
+  "telegram_chat_id": "your_chat_id",
+  "check_interval": 30,
+  "enable_hourly_report": true
+}
