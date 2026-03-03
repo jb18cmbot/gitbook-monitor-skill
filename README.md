@@ -1,29 +1,22 @@
-# GitBook Monitor - OpenClaw Skill
+# GitBook Monitor - OpenClaw Skill (Linux)
 
-自动监控 GitBook 内容变更并推送 Telegram 通知（Linux 专用）。
+自动监控 GitBook 内容变更并推送 Telegram 通知。
 
-## 快速安装
+## 一键安装
 
 ```bash
-# 1. 克隆到 OpenClaw skills 目录
 cd ~/.openclaw/skills
-git clone https://github.com/jb18cmbot/gitbook-monitor.git
-
-# 2. 安装依赖
+git clone https://github.com/jb18cmbot/gitbook-monitor-skill.git gitbook-monitor
 cd gitbook-monitor
 python3 -m venv venv
 source venv/bin/activate
 pip install langchain-community beautifulsoup4 requests
-
-# 3. 配置
 cp config.example.json config.json
-nano config.json  # 编辑配置
-
-# 4. 安装服务
+# 编辑 config.json 填入你的配置
 ./install.sh
 ```
 
-## 配置说明
+## 配置
 
 编辑 `config.json`：
 
@@ -36,74 +29,37 @@ nano config.json  # 编辑配置
 }
 ```
 
-获取 Telegram Chat ID：
-1. 在 Telegram 中找 `@userinfobot`
-2. 发送 `/start`
-3. 复制你的 ID
+获取 Telegram Chat ID：发送消息给 `@userinfobot`
 
-## 功能特性
+## 功能
 
-- ✅ 自动检测 GitBook 内容变更
-- ✅ 实时 Telegram 推送通知
-- ✅ 可自定义检查间隔（默认 30 秒）
-- ✅ 详细的变更记录（新增/删除/修改页面）
+- ✅ 自动检测内容变更（新增/删除/修改页面）
+- ✅ Telegram 实时通知
+- ✅ 可自定义检查间隔
 - ✅ 小时统计报告
 - ✅ 错误自动通知
 - ✅ 支持 systemd timer 或 cron
 
-## 管理命令
+## 管理
 
 ```bash
-# 查看状态（systemd）
-systemctl --user status gitbook-monitor.timer
-
-# 查看状态（cron）
-crontab -l | grep gitbook
+# 查看状态
+systemctl --user status gitbook-monitor.timer  # systemd
+crontab -l | grep gitbook                       # cron
 
 # 查看日志
 tail -f ~/.openclaw/skills/gitbook-monitor/monitor.log
-
-# 手动测试
-cd ~/.openclaw/skills/gitbook-monitor
-source venv/bin/activate
-python3 monitor_gitbook.py
 
 # 卸载
 ./uninstall.sh
 ```
 
-## 通知示例
-
-**内容变更**：
-```
-🔔 GitBook 内容变更
-
-• 新增页面：getting-started/installation
-• 内容变更：api/reference (+245 字符)
-
-🔗 https://your-gitbook-url.gitbook.io/your-book
-```
-
-**小时报告**：
-```
-📊 GitBook 监控小时报告
-
-本小时访问次数：120
-错误次数：0
-总访问次数：4504
-检测到变更：3 次
-```
-
 ## 系统要求
 
-- Linux（支持 systemd 或 cron）
+- Linux（systemd 或 cron）
 - Python 3.7+
-- OpenClaw 已配置 Telegram
+- OpenClaw + Telegram
 
 ## 许可证
 
-MIT License
-
-## 作者
-
-jb18cm
+MIT
